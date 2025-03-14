@@ -15,13 +15,13 @@ Before you begin, make sure you have the following installed:
 - **npm** (Comes with Node.js)  
 - A modern **web browser** (Chrome, Firefox, Edge, or Safari)
 
-### Installation
+### Running the Project
 
 1. **Clone the repository**  
-   ```sh
-   git clone https://github.com/your-username/procedural-dungeon.git
-   cd procedural-dungeon
-   ```
+  ```sh
+  git clone https://github.com/your-username/procedural-dungeon.git
+  cd procedural-dungeon
+  ```
 
 2. **Install dependencies**
   ```sh
