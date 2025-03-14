@@ -50,7 +50,7 @@ document.addEventListener('keydown', (event) => {
 });
 document.addEventListener('keyup', (event) => keys[event.code] = false);
 
-// ✅ **Load Textures Function**
+// **Load Textures Function**
 const textureLoader = new THREE.TextureLoader();
 function loadTextures(folder, texture_name) {
     return {
@@ -61,7 +61,7 @@ function loadTextures(folder, texture_name) {
     };
 }
 
-// ✅ **Apply Texture Wrapping & Tiling**
+// **Apply Texture Wrapping & Tiling**
 function configureTextures(textures, repeat = 5) {
     Object.values(textures).forEach(texture => {
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
@@ -69,13 +69,13 @@ function configureTextures(textures, repeat = 5) {
     });
 }
 
-// ✅ **Load Textures for Open Box (RockLava) & Terrain (RockDark)**
+// **Load Textures for Open Box (RockLava) & Terrain (RockDark)**
 const openBoxTextures = loadTextures('RockLava', 'SuperheatedRockLavaSurface');
 const terrainTextures = loadTextures('RockDark', 'FracturedCliff6Dark');
 configureTextures(openBoxTextures);
 configureTextures(terrainTextures);
 
-// ✅ **Create Open Box (Lava)**
+// **Create Open Box (Lava)**
 function createOpenBox(width, height, depth) {
     const material = new THREE.MeshStandardMaterial({ color: 0x000000, side: THREE.DoubleSide });
     const group = new THREE.Group();
@@ -108,7 +108,7 @@ function createOpenBox(width, height, depth) {
     return group;
 }
 
-// ✅ **Create Procedural Terrain with Textures**
+// **Create Procedural Terrain with Textures**
 function createTexturedTerrain(width, length, segments, scale) {
     let terrain = createFBMTerrain(width, length, segments, scale, octaves, persistence, lacunarity);
     
@@ -124,7 +124,7 @@ function createTexturedTerrain(width, length, segments, scale) {
     return terrain;
 }
 
-// ✅ **Initialize Terrain & Open Box**
+// **Initialize Terrain & Open Box**
 let terrain_list = [];
 let box_list = [];
 let currentMaxZ = 0;
@@ -146,13 +146,13 @@ currentMaxZ = terrain.position.z + TERRAIN_LENGTH;
 currentMinY = terrain.position.y;
 camera.lookAt(terrain.position);
 
-// ✅ **Lighting**
+// **Lighting**
 const pointLight = new THREE.PointLight(0xffffff, 4000, 1000);
 pointLight.position.set(0, 100, 0);
 scene.add(pointLight);
 scene.add(new THREE.AmbientLight(0x404040, 10));
 
-// ✅ **Terrain Generation**
+// **Terrain Generation**
 function updateTerrain() {
     if (updatingTerrain) return;
     updatingTerrain = true;
@@ -183,7 +183,7 @@ function updateTerrain() {
     updatingTerrain = false;
 }
 
-// ✅ **Animation Loop**
+// **Animation Loop**
 function animate() {
     requestAnimationFrame(animate);
     updateTerrain();
@@ -212,5 +212,5 @@ function animate() {
     renderer.render(scene, camera);
 }
 
-// ✅ **Start Animation**
+// **Start Animation**
 animate();
